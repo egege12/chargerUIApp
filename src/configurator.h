@@ -1,0 +1,4 @@
+#ifndef CONFIGURATOR_H
+#define CONFIGURATOR_H
+
+#endif // CONFIGURATOR_H
