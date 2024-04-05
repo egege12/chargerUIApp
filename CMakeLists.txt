@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON )
 file(GLOB src "src/*.cpp")
 file(GLOB header "src/*.h")
-find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick Network SerialPort Sql)
+find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick Network Sql SerialPort QuickControls2)
 
 
 if (Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
@@ -42,6 +42,7 @@ target_link_libraries(chargerUIApp PRIVATE
     Qt6::Network
     Qt6::SerialPort
     Qt6::Sql
+    Qt6::QuickControls2
 )
 
 if (BUILD_QDS_COMPONENTS)
@@ -65,10 +66,10 @@ install(TARGETS chargerUIApp
 set(QML_IMPORT_PATH ${PROJECT_BINARY_DIR}/qml CACHE PATH
     "Path to the custom QML components defined by the project")
 
-set(INSTALL_DESTDIR "/home/charger/QtApp")
+# set(INSTALL_DESTDIR "/home/charger/QtApp")
 
-install(TARGETS chargerUIApp
-    RUNTIME DESTINATION ${INSTALL_DESTDIR}
-    BUNDLE DESTINATION ${INSTALL_DESTDIR}
-    LIBRARY DESTINATION ${INSTALL_DESTDIR}
-)
+# install(TARGETS chargerUIApp
+#     RUNTIME DESTINATION ${INSTALL_DESTDIR}
+#     BUNDLE DESTINATION ${INSTALL_DESTDIR}
+#     LIBRARY DESTINATION ${INSTALL_DESTDIR}
+# )
