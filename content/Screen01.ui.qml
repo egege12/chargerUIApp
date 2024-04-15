@@ -176,7 +176,7 @@ Rectangle {
                 width: 492
                 height: 406
                 anchors.left: parent.left
-                anchors.leftMargin: 0
+                anchors.leftMargin: 20
                 source: "images/plug.png"
                 fillMode: Image.PreserveAspectFit
             }
@@ -245,7 +245,7 @@ Rectangle {
                 width: 492
                 height: 406
                 anchors.left: parent.left
-                anchors.leftMargin: 0
+                anchors.leftMargin: 20
                 source: "images/plug.png"
                 fillMode: Image.PreserveAspectFit
             }

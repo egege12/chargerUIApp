@@ -66,10 +66,12 @@ install(TARGETS chargerUIApp
 set(QML_IMPORT_PATH ${PROJECT_BINARY_DIR}/qml CACHE PATH
     "Path to the custom QML components defined by the project")
 
-# set(INSTALL_DESTDIR "/home/charger/QtApp")
+if(UNIX AND NOT APPLE)
+set(INSTALL_DESTDIR "/home/charger/QtApp")
 
-# install(TARGETS chargerUIApp
-#     RUNTIME DESTINATION ${INSTALL_DESTDIR}
-#     BUNDLE DESTINATION ${INSTALL_DESTDIR}
-#     LIBRARY DESTINATION ${INSTALL_DESTDIR}
-# )
+install(TARGETS chargerUIApp
+    RUNTIME DESTINATION ${INSTALL_DESTDIR}
+    BUNDLE DESTINATION ${INSTALL_DESTDIR}
+    LIBRARY DESTINATION ${INSTALL_DESTDIR}
+)
+endif()
