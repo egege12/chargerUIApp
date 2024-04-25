@@ -1,4 +1,0 @@
-#ifndef DATABASEDRIVER_H
-#define DATABASEDRIVER_H
-
-#endif // DATABASEDRIVER_H
