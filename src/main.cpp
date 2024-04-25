@@ -20,16 +20,21 @@ int main(int argc, char *argv[])
 /*Open thread and move to it*/
     QThread::currentThread()->setObjectName("Main Thread");
     workerThread.setObjectName("Communication Thread");
-        //socketUDP udpSocket(nullptr,"10.100.30.202","10.100.30.200","5500","bidirectional",1000,udpReceive,udpSend);
+        //socketUDP udpSocket(nullptr,"10.100.30.202","10.100.30.200","5500","bidirectional",1000,udpReceive,udpSend);  ->> This one is old but good
     socketUDP udpSocket(nullptr,udpReceive,udpSend);
     /*                           destination adress, source adress*/
     udpSocket.moveToThread(&workerThread);
     QObject::connect(&workerThread, SIGNAL(started()), &udpSocket, SLOT(startUdpCom()));
-        //QObject::connect(&workerThread, SIGNAL(finished()), &udpSocket, SLOT(stopUdpCom()));
+        //QObject::connect(&workerThread, SIGNAL(finished()), &udpSocket, SLOT(stopUdpCom()));   ->> This will be handled
     workerThread.start();
 emit udpSocket.sendDatagram();
+/**/
+
+/*Internal Data Connections*/
+QObject::connect(&readerRFID, SIGNAL(cardRead),&internalOp,SLOT(checkforID));
 
 /**/
+
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
     const QUrl url(u"qrc:/qt/qml/Main/main.qml"_qs);

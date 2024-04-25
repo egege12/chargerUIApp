@@ -14,20 +14,21 @@ class InternalOp : public QObject{
     Q_OBJECT
     Q_PROPERTY(unsigned long activeScreen READ activeScreen WRITE setActiveScreen NOTIFY activeScreenChanged)
     Q_PROPERTY(bool loadingProgress READ loadingProgress WRITE setLoadingProgress NOTIFY loadingProgressChanged)
-
 public:
     InternalOp();
 
     unsigned long activeScreen() const;
     void setActiveScreen(unsigned long newActiveScreen);
-
     bool loadingProgress() const;
     void setLoadingProgress(bool newLoadingProgress);
-
+    bool queryID(QString data);
+public slots:
+    void checkforID(QString data);
 signals:
     void activeScreenChanged();
-
     void loadingProgressChanged();
+
+    void idResult(QString result);
 
 private:
     unsigned long m_activeScreen;
@@ -47,6 +48,21 @@ inline void InternalOp::setLoadingProgress(bool newLoadingProgress)
     qInfo()<<"loading changed";
     emit loadingProgressChanged();
 
+}
+
+inline bool InternalOp::queryID(QString data)
+{
+    return true;
+}
+
+inline void InternalOp::checkforID(QString data)
+{
+    if(data ==""){
+        emit this->idResult("000");
+    }else if (queryID(data))
+        emit this->idResult("200");
+    else
+        emit this->idResult("300");
 }
 
 inline unsigned long InternalOp::activeScreen() const

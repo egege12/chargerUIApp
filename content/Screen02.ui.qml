@@ -168,17 +168,6 @@ Rectangle {
                 font.family: "Tahoma"
                 anchors.verticalCenterOffset: -173
             }
-
-            Image {
-                id: plug
-                y: 163
-                width: 492
-                height: 406
-                anchors.left: parent.left
-                anchors.leftMargin: 20
-                source: "images/plug.png"
-                fillMode: Image.PreserveAspectFit
-            }
         }
 
         Rectangle {
@@ -236,19 +225,6 @@ Rectangle {
                 font.family: "Tahoma"
                 font.capitalization: Font.SmallCaps
                 anchors.verticalCenterOffset: -173
-            }
-
-            Image {
-                id: plug1
-                y: 195
-                width: parent.width
-                height: 406
-                anchors.left: parent.left
-                anchors.leftMargin: 0
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: -51
-                source: "images/plug.png"
-                fillMode: Image.PreserveAspectFit
             }
         }
     }

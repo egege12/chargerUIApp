@@ -9,21 +9,22 @@ Rectangle {
     property int buttonRadius : 1
     property real buttonOpacity : 0.4
 
-        width: 105
-        height: parent.height
+        width: parent.width
+        height: 30
     MouseArea{
-            width:parent.width
+            width:105
             height:parent.height
-            anchors.fill:parent
+            anchors.right:parent.right
+            anchors.top:parent.top
             hoverEnabled: true
             onEntered: buttonbarrect.buttonOpacity = 1
             onExited: buttonbarrect.buttonOpacity = 0.4
 
             MenuButton {
                 id : buttonIconSize
-                width: parent.width/3
+                width: 35
                 height: parent.height
-                buttonImageSource : "qrc:/img/iconIconSizeButton.png"
+                buttonImageSource : "images/iconIconSizeButton.png"
                 clip: false
                 buttonOpacity: buttonbarrect.buttonOpacity
                 visible: true
@@ -39,9 +40,9 @@ Rectangle {
 
             MenuButton {
                 id : buttonFullscreen
-                width: parent.width/3
+                width: 35
                 height: parent.height
-                buttonImageSource : "qrc:/img/iconFullscreenButton.png"
+                buttonImageSource : "images/iconFullscreenButton.png"
                 clip: false
                 buttonOpacity: buttonbarrect.buttonOpacity
                 visible: true
@@ -56,9 +57,9 @@ Rectangle {
             }
             MenuButton {
                 id : escapeButton
-                width: parent.width/3
+                width: 35
                 height: parent.height
-                buttonImageSource : "qrc:/img/iconEscapeButton.png"
+                buttonImageSource : "images/iconEscapeButton.png"
                 clip: false
                 buttonOpacity: buttonbarrect.buttonOpacity
                 visible: true

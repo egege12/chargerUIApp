@@ -22,8 +22,9 @@ public:
     void setserialInit(bool newSerialInit);
 
 signals:
-    void cardRead();
+    void cardRead(QString ID);
     void serialInitChanged();
+
 
 public slots:
     void initPort();
@@ -100,6 +101,9 @@ inline void serialRFID::readData()
 {
     const QByteArray data = serialPort.readAll();
     qDebug() << "Serial port RFID data:" << data;
+    QString dataStr = QString(data);
+    this->cardRead(data);
+
 }
 
 inline void serialRFID::readErrorOnSerialPort(QSerialPort::SerialPortError error)

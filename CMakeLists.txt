@@ -23,9 +23,6 @@ endif()
 qt_add_executable(chargerUIApp
    ${src}
    ${header}
-   ButtonBar.qml
-   MenuButton.qml
-   PopupWindow.qml
     )
 
 qt_add_resources(chargerUIApp "configuration"

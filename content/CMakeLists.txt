@@ -7,12 +7,24 @@ qt6_add_qml_module(content
     VERSION 1.0
     RESOURCE_PREFIX "/qt/qml"
     QML_FILES
+        TopBar.qml
+        MenuButton.qml
         App.qml
         Screen01.ui.qml
+        Screen02.ui.qml
+        SideBar.qml
+
 
 
     RESOURCES
         fonts/fonts.txt
         images/plug.png
+        images/iconEscapeButton.png
+        images/iconFullscreenButton.png
+        images/iconIconSizeButton.png
+        images/sidebar_extend.png
+        images/sidebar_rectract.png
+        icons/Bookmarks.svg icons/Explore.svg icons/Home.svg icons/Menu.svg icons/Messages.svg icons/Notifications.svg icons/Profile.svg icons/Search.svg icons/Setting.svg #General icons might we need
+        icons/Parameters.svg icons/Settings.svg icons/Details.svg icons/Events.svg icons/Charge.svg icons/Test.svg icons/Interface.svg icons/Logout.svg #menu icons
 
 )
