@@ -5,16 +5,18 @@ import Qt5Compat.GraphicalEffects
 Item {
     id: sideBar
 
-    width: 105
+    width: 0
     height: 768
     state: 'noside'
     anchors.left: parent.left
-    property int indexPage : 1
+    property int indexPage : 0
     property string sideBarState: "noside"
+    property bool isDesktop: true;
     /*Side bar controls here */
     signal openSideBar;
     signal closeSideBar;
     signal noSideBar;
+
 
     onCloseSideBar: {
         sideBar.state='close'
@@ -25,18 +27,33 @@ Item {
          sideBarState = sideBar.state
     }
     onNoSideBar: {
-        sideBar.state='noside'
-        sideBarState = sideBar.state
-        indexPage=1
+        //if(sideBar.isDesktop ===false){
+            sideBar.state='noside'
+            sideBarState = sideBar.state
+            indexPage=1
+        //}
     }
 
     states: [
+        State {
+            name: 'noside'
+
+            PropertyChanges {
+                target: sideBar
+                width: 0
+            }
+
+            PropertyChanges {
+                target: timer
+                index: 0
+            }
+        },
         State {
             name: 'open'
 
             PropertyChanges {
                 target: sideBar
-                width: 150
+                width: 174
             }
 
             PropertyChanges {
@@ -56,20 +73,8 @@ Item {
                 target: timer
                 index: 0
             }
-        },
-        State {
-            name: 'noside'
-
-            PropertyChanges {
-                target: sideBar
-                width: 0
-            }
-
-            PropertyChanges {
-                target: timer
-                index: 0
-            }
         }
+
     ]
 
     transitions: [
@@ -217,7 +222,7 @@ Item {
         id: body
 
         radius: 0
-        color: '#56A95C'
+        color: '#23992b'
         anchors.fill: parent
 
         ColumnLayout {
@@ -237,7 +242,7 @@ Item {
                     Layout.preferredWidth: 60
                     Layout.preferredHeight: 60
                     radius: 10
-                    color: sideBar.indexPage === model.index ? '#F2EFEF' : buttonMouseArea.containsMouse ? '#F2EFEF':'transparent'
+                    color:sideBar.indexPage === model.index ? '#F2EFEF' : buttonMouseArea.containsMouse ? ((model.index == 5 || model.index == 6 || model.index == 7)? 'transparent':'#F2EFEF'):'transparent'
                     Layout.alignment: Qt.AlignLeft
                     Layout.topMargin: model.index === 1 ? 20 : 0
                     state: 'noside'
@@ -351,7 +356,8 @@ Item {
                                     sideBar.noSideBar();
                              }
                                 else{
-                                sideBar.indexPage = model.index
+                                if(model.index !== 5 && model.index !== 6 && model.index !== 7)
+                                   sideBar.indexPage = model.index
                             }
 
 

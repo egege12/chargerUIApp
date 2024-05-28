@@ -5,256 +5,342 @@ import chargerUI
 
 Rectangle {
     id: rectangle
-    width: 1024
     height: 768
+    width: 1024
     opacity: 1
-    color: "#46000000"
+    color: "transparent"
     clip: true
-    property bool buttonState: true
+    property bool plugged1: false
+    property bool plugged2: false
+    onPlugged1Changed: rectangleQrorPlug1Clip.visible = !rectangle.plugged1
+    onPlugged2Changed: rectangleQrorPlug2Clip.visible = !rectangle.plugged2
 
-    Connections {
-        target: rectangle
-        onButtonStateChanged: button.text = "press again"
+    Rectangle {
+        id: rectangleEvse1Header
+        anchors.right: parent.horizontalCenter
+        anchors.rightMargin: parent.width * .09
+        anchors.bottom: parent.verticalCenter
+        anchors.bottomMargin: parent.height * .35
+        width: parent.width * .40
+        height: 60
+        color: '#23992b'
+        radius: 20
+        opacity: 0.5
+        border.width: 0
     }
-
-    Grid {
-        id: grid
-        x: 0
-        y: 0
-        anchors.fill: parent
-        topPadding: 30
-        rightPadding: 60
-        leftPadding: 60
-        spacing: 15
-        rows: 2
-        columns: 2
-
+    Rectangle {
+        id: rectangleQrorPlug1
+        anchors.horizontalCenter: rectangleEvse1Header.horizontalCenter
+        anchors.top: rectangleEvse1Header.bottom
+        anchors.topMargin: parent.height * .05
+        width: parent.width * .25
+        height: parent.height * .70
+        color: '#23992b'
+        radius: 20
+        opacity: 0.5
+        border.width: 0
+        clip: true
+    }
+    Rectangle {
+        id: rectangleQrorPlug1Clip
+        anchors.horizontalCenter: rectangleEvse1Header.horizontalCenter
+        anchors.top: rectangleEvse1Header.bottom
+        anchors.topMargin: parent.height * .05
+        width: parent.width * .25
+        height: parent.height * .70
+        color: 'transparent'
+        radius: 20
+        opacity: 1
+        border.width: 0
+        clip: true
+        visible: true
+        Image {
+            id: plugEvse1
+            width: rectangleQrorPlug1Clip.width * .7
+            source: "images/plug.webp"
+            fillMode: Image.PreserveAspectFit
+            anchors.verticalCenter: rectangleQrorPlug1Clip.verticalCenter
+            anchors.verticalCenterOffset: rectangleQrorPlug1Clip.height * 0.37
+            anchors.horizontalCenter: rectangleQrorPlug1Clip.horizontalCenter
+        }
         Rectangle {
             id: rectangle1
-            width: parent.width * .40
-            height: 100
-            color: "#e3243038"
-            border.width: 0
-
-            Text {
-                id: text2
-                x: 25
-                width: 204
-                height: 43
-                color: "#ffffff"
-                text: qsTr("CSS 2 EVSE 1")
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: parent.left
-                anchors.leftMargin: 20
-                font.pixelSize: 32
-                font.wordSpacing: 0
-                font.styleName: "Normal"
-                font.family: "Tahoma"
-            }
-
-            Text {
-                id: text4
-                x: 281
-                width: 149
-                height: 43
-                color: "#ffffff"
-                text: qsTr("90kW")
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.right: parent.right
-                anchors.rightMargin: 20
-                font.pixelSize: 32
-                horizontalAlignment: Text.AlignRight
-                font.wordSpacing: 0
-                font.styleName: "Normal"
-                font.family: "Tahoma"
-            }
+            anchors.verticalCenter: rectangleQrorPlug1Clip.verticalCenter
+            anchors.horizontalCenter: rectangleQrorPlug1Clip.horizontalCenter
+            anchors.horizontalCenterOffset: rectangleQrorPlug1Clip.width * 0.25
+            width: rectangleQrorPlug1Clip.width * 0.35
+            height: 4
+            color: "#ffffff"
+            radius: 50
         }
-
         Rectangle {
             id: rectangle2
-            x: 0
-            width: parent.width * .40
-            height: 100
-            color: "#e3243038"
-            border.width: 0
-
-            Text {
-                id: text1
-                width: 204
-                height: 43
-                color: "#ffffff"
-                text: qsTr("CSS 2 EVSE 2")
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: parent.left
-                anchors.leftMargin: 20
-                font.pixelSize: 32
-                font.wordSpacing: 0
-                font.styleName: "Normal"
-                font.family: "Tahoma"
-            }
-
-            Text {
-                id: text3
-                x: 286
-                width: 149
-                height: 43
-                color: "#ffffff"
-                text: qsTr("90kW")
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.right: parent.right
-                anchors.rightMargin: 20
-                font.pixelSize: 32
-                horizontalAlignment: Text.AlignRight
-                font.wordSpacing: 0
-                font.styleName: "Normal"
-                font.family: "Tahoma"
-            }
+            anchors.verticalCenter: rectangleQrorPlug1Clip.verticalCenter
+            anchors.horizontalCenter: rectangleQrorPlug1Clip.horizontalCenter
+            anchors.horizontalCenterOffset: -rectangleQrorPlug1Clip.width * 0.25
+            width: rectangleQrorPlug1Clip.width * 0.35
+            height: 4
+            color: "#ffffff"
+            radius: 50
         }
-
-        Rectangle {
-            id: rectangle3
-            width: parent.width * .40
-            height: 550
-            color: "#e3243038"
-            border.width: 0
-
-            Text {
-                id: text5
-                x: 20
-                width: 341
-                height: 69
-                color: "#c15300"
-                text: qsTr("Soketi Takın")
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: parent.left
-                anchors.top: parent.top
-                anchors.leftMargin: 23
-                anchors.topMargin: 194
-                font.pixelSize: 62
-                wrapMode: Text.WordWrap
-                anchors.verticalCenterOffset: -47
-                font.wordSpacing: 0
-                font.styleName: "Kalın"
-                font.family: "Tahoma"
-            }
-
-            Text {
-                id: text7
-                x: 20
-                width: 351
-                height: 150
-                color: "#ffffff"
-                text: qsTr("Şarja başlamak için")
-                elide: Text.ElideLeft
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: parent.left
-                anchors.top: parent.top
-                anchors.leftMargin: 23
-                anchors.topMargin: 27
-                font.pixelSize: 62
-                lineHeightMode: Text.ProportionalHeight
-                wrapMode: Text.WordWrap
-                layer.enabled: false
-                layer.smooth: true
-                layer.mipmap: true
-                layer.wrapMode: ShaderEffectSource.Repeat
-                font.hintingPreference: Font.PreferNoHinting
-                styleColor: "#ffffff"
-                style: Text.Normal
-                font.capitalization: Font.SmallCaps
-                fontSizeMode: Text.FixedSize
-                font.wordSpacing: 0
-                font.styleName: "Kalın"
-                font.family: "Tahoma"
-                anchors.verticalCenterOffset: -173
-            }
-
-            Image {
-                id: plug
-                y: 163
-                width: 492
-                height: 406
-                anchors.left: parent.left
-                anchors.leftMargin: 20
-                source: "images/plug.png"
-                fillMode: Image.PreserveAspectFit
-            }
+        Text {
+            id: evse1QrPlugText
+            anchors.bottom: plugEvse1.top
+            anchors.bottomMargin: 10
+            anchors.horizontalCenter: rectangleQrorPlug1Clip.horizontalCenter
+            width: qrEvse1.width
+            height: 43
+            color: "#ffffff"
+            text: qsTr("PLUG IN")
+            font.pixelSize: 32
+            horizontalAlignment: Text.AlignHCenter
+            font.wordSpacing: 0
+            font.styleName: "Bold"
+            font.family: "Tahoma"
         }
-
-        Rectangle {
-            id: rectangle4
-            width: parent.width * .40
-            height: 550
-            color: "#e3243038"
-            border.width: 0
-            Text {
-                id: text6
-                x: 20
-                width: 341
-                height: 66
-                color: "#c15300"
-                text: qsTr("Soketi Takın")
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: parent.left
-                anchors.top: parent.top
-                anchors.leftMargin: 23
-                anchors.topMargin: 195
-                font.pixelSize: 62
-                wrapMode: Text.WordWrap
-                font.wordSpacing: 0
-                font.styleName: "Kalın"
-                font.family: "Tahoma"
-                anchors.verticalCenterOffset: -47
-            }
-
-            Text {
-                id: text8
-                x: 20
-                width: 351
-                height: 150
-                color: "#ffffff"
-                text: qsTr("Şarja başlamak için")
-                elide: Text.ElideLeft
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: parent.left
-                anchors.top: parent.top
-                anchors.leftMargin: 23
-                anchors.topMargin: 27
-                font.pixelSize: 62
-                lineHeightMode: Text.ProportionalHeight
-                wrapMode: Text.WordWrap
-                styleColor: "#ffffff"
-                style: Text.Normal
-                layer.wrapMode: ShaderEffectSource.Repeat
-                layer.smooth: true
-                layer.mipmap: true
-                layer.enabled: false
-                fontSizeMode: Text.FixedSize
-                font.wordSpacing: 0
-                font.styleName: "Kalın"
-                font.hintingPreference: Font.PreferNoHinting
-                font.family: "Tahoma"
-                font.capitalization: Font.SmallCaps
-                anchors.verticalCenterOffset: -173
-            }
-
-            Image {
-                id: plug1
-                y: 195
-                width: parent.width
-                height: 406
-                anchors.left: parent.left
-                anchors.leftMargin: 0
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: -51
-                source: "images/plug.png"
-                fillMode: Image.PreserveAspectFit
-            }
+        Text {
+            id: evse1orText
+            anchors.verticalCenter: rectangleQrorPlug1Clip.verticalCenter
+            anchors.horizontalCenter: rectangleQrorPlug1Clip.horizontalCenter
+            width: qrEvse1.width
+            height: 25
+            color: "#ffffff"
+            text: qsTr("or")
+            font.pixelSize: 22
+            horizontalAlignment: Text.AlignHCenter
+            font.wordSpacing: 0
+            font.styleName: "Bold"
+            font.family: "Tahoma"
         }
     }
-    states: [
-        State {
-            name: "clicked"
+    Text {
+        id: evse1QrScanText
+        anchors.bottom: qrEvse1.top
+        anchors.bottomMargin: 5
+        anchors.horizontalCenter: qrEvse1.horizontalCenter
+        width: qrEvse1.width
+        height: 43
+        color: "#ffffff"
+        text: qsTr("SCAN")
+        font.pixelSize: 32
+        horizontalAlignment: Text.AlignHCenter
+        font.wordSpacing: 0
+        font.styleName: "Bold"
+        font.family: "Tahoma"
+    }
+
+    Image {
+        id: qrEvse1
+        width: rectangleQrorPlug1.width * .70
+        source: "icons/BozankayaQr.png"
+        fillMode: Image.PreserveAspectFit
+        anchors.verticalCenter: rectangleQrorPlug1.verticalCenter
+        anchors.verticalCenterOffset: rectangleQrorPlug1Clip.visible ? (-rectangleQrorPlug1.height
+                                                                        * 0.23) : 0
+        anchors.horizontalCenter: rectangleQrorPlug1.horizontalCenter
+    }
+    Image {
+        id: rfidRead
+        width: rectangleQrorPlug1.width * .50
+        source: "icons/RFIDread.webp"
+        fillMode: Image.PreserveAspectFit
+        anchors.top: qrEvse1.bottom
+        anchors.topMargin: 10
+        anchors.horizontalCenter: rectangleQrorPlug1.horizontalCenter
+        visible: !rectangleQrorPlug1Clip.visible
+    }
+
+    Text {
+        id: evse1Text
+        anchors.left: rectangleEvse1Header.left
+        anchors.leftMargin: 20
+        anchors.verticalCenter: rectangleEvse1Header.verticalCenter
+        width: 204
+        height: 43
+        color: "#ffffff"
+        text: qsTr("CSS 2 EVSE 1")
+        font.pixelSize: 32
+        font.wordSpacing: 0
+        font.styleName: "Normal"
+        font.family: "Tahoma"
+    }
+    Text {
+        id: evse1Power
+        width: 100
+        height: 43
+        color: "#ffffff"
+        text: qsTr("120kW")
+        anchors.verticalCenter: rectangleEvse1Header.verticalCenter
+        anchors.right: rectangleEvse1Header.right
+        anchors.rightMargin: 20
+        font.pixelSize: 32
+        horizontalAlignment: Text.AlignRight
+        font.wordSpacing: 0
+        font.styleName: "Normal"
+        font.family: "Tahoma"
+    }
+
+    Rectangle {
+        id: rectangleEvse2Header
+        width: parent.width * .40
+        height: 60
+        color: '#23992b'
+        radius: 20
+        opacity: 0.5
+        border.width: 0
+        anchors.left: parent.horizontalCenter
+        anchors.leftMargin: parent.width * .09
+        anchors.bottom: parent.verticalCenter
+        anchors.bottomMargin: parent.height * .35
+    }
+    Rectangle {
+        id: rectangleQrorPlug2
+        anchors.horizontalCenter: rectangleEvse2Header.horizontalCenter
+        anchors.top: rectangleEvse2Header.bottom
+        anchors.topMargin: parent.height * .05
+        width: parent.width * .25
+        height: parent.height * .70
+        color: '#23992b'
+        radius: 20
+        opacity: 0.5
+        border.width: 0
+    }
+    Rectangle {
+        id: rectangleQrorPlug2Clip
+        anchors.horizontalCenter: rectangleEvse2Header.horizontalCenter
+        anchors.top: rectangleEvse2Header.bottom
+        anchors.topMargin: parent.height * .05
+        width: parent.width * .25
+        height: parent.height * .70
+        color: 'transparent'
+        radius: 20
+        opacity: 1
+        border.width: 0
+        clip: true
+        Image {
+            id: plugEvse2
+            width: rectangleQrorPlug2Clip.width * .7
+            source: "images/plug.webp"
+            fillMode: Image.PreserveAspectFit
+            anchors.verticalCenter: rectangleQrorPlug2Clip.verticalCenter
+            anchors.verticalCenterOffset: rectangleQrorPlug2Clip.height * 0.37
+            anchors.horizontalCenter: rectangleQrorPlug2Clip.horizontalCenter
         }
-    ]
+        Rectangle {
+            id: rectangle3
+            anchors.verticalCenter: rectangleQrorPlug2Clip.verticalCenter
+            anchors.horizontalCenter: rectangleQrorPlug2Clip.horizontalCenter
+            anchors.horizontalCenterOffset: rectangleQrorPlug2Clip.width * 0.25
+            width: rectangleQrorPlug2Clip.width * 0.35
+            height: 4
+            color: "#ffffff"
+            radius: 50
+        }
+        Rectangle {
+            id: rectangle4
+            anchors.verticalCenter: rectangleQrorPlug2Clip.verticalCenter
+            anchors.horizontalCenter: rectangleQrorPlug2Clip.horizontalCenter
+            anchors.horizontalCenterOffset: -rectangleQrorPlug2Clip.width * 0.25
+            width: rectangleQrorPlug2Clip.width * 0.35
+            height: 4
+            color: "#ffffff"
+            radius: 50
+        }
+        Text {
+            id: evse2QrPlugText
+            anchors.bottom: plugEvse2.top
+            anchors.bottomMargin: 10
+            anchors.horizontalCenter: rectangleQrorPlug2Clip.horizontalCenter
+            width: qrEvse2.width
+            height: 43
+            color: "#ffffff"
+            text: qsTr("PLUG IN")
+            font.pixelSize: 32
+            horizontalAlignment: Text.AlignHCenter
+            font.wordSpacing: 0
+            font.styleName: "Bold"
+            font.family: "Tahoma"
+        }
+        Text {
+            id: evse2orText
+            anchors.verticalCenter: rectangleQrorPlug2Clip.verticalCenter
+            anchors.horizontalCenter: rectangleQrorPlug2Clip.horizontalCenter
+            width: qrEvse1.width
+            height: 25
+            color: "#ffffff"
+            text: qsTr("or")
+            font.pixelSize: 22
+            horizontalAlignment: Text.AlignHCenter
+            font.wordSpacing: 0
+            font.styleName: "Bold"
+            font.family: "Tahoma"
+        }
+    }
+
+    Text {
+        id: evse2QrScanText
+        anchors.bottom: qrEvse2.top
+        anchors.bottomMargin: 5
+        anchors.horizontalCenter: qrEvse2.horizontalCenter
+        width: qrEvse2.width
+        height: 43
+        color: "#ffffff"
+        text: qsTr("SCAN")
+        font.pixelSize: 32
+        horizontalAlignment: Text.AlignHCenter
+        font.wordSpacing: 0
+        font.styleName: "Bold"
+        font.family: "Tahoma"
+    }
+    Image {
+        id: qrEvse2
+        width: rectangleQrorPlug2.width * .70
+        source: "icons/BozankayaQr.png"
+        fillMode: Image.PreserveAspectFit
+        anchors.verticalCenter: rectangleQrorPlug2.verticalCenter
+        anchors.verticalCenterOffset: rectangleQrorPlug2Clip.visible ? (-rectangleQrorPlug2.height
+                                                                        * 0.23) : 0
+        anchors.horizontalCenter: rectangleQrorPlug2.horizontalCenter
+    }
+    Image {
+        id: rfidRead2
+        width: rectangleQrorPlug2.width * .50
+        source: "icons/RFIDread.webp"
+        fillMode: Image.PreserveAspectFit
+        anchors.top: qrEvse2.bottom
+        anchors.topMargin: 10
+        anchors.horizontalCenter: rectangleQrorPlug2.horizontalCenter
+        visible: !rectangleQrorPlug2Clip.visible
+    }
+
+    Text {
+        id: evse2Text
+        anchors.left: rectangleEvse2Header.left
+        anchors.leftMargin: 20
+        anchors.verticalCenter: rectangleEvse2Header.verticalCenter
+
+        width: 204
+        height: 43
+        color: "#ffffff"
+        text: qsTr("CSS 2 EVSE 1")
+        font.pixelSize: 32
+        font.wordSpacing: 0
+        font.styleName: "Normal"
+        font.family: "Tahoma"
+    }
+    Text {
+        id: evse2Power
+        width: 100
+        height: 43
+        color: "#ffffff"
+        text: qsTr("120kW")
+        anchors.verticalCenter: rectangleEvse2Header.verticalCenter
+        anchors.right: rectangleEvse2Header.right
+        anchors.rightMargin: 20
+        font.pixelSize: 32
+        horizontalAlignment: Text.AlignRight
+        font.wordSpacing: 0
+        font.styleName: "Normal"
+        font.family: "Tahoma"
+    }
 }

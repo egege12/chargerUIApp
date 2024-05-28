@@ -1,0 +1,62 @@
+# Ignore build directories
+build/
+Build/
+cmake-build-*/
+
+# Ignore QtCreator files
+*.user
+*.pro.user
+*.qbs.user
+*.pro.user.*
+*.pro.user.*
+
+# Ignore CMake files
+CMakeLists.txt.user
+CMakeLists.txt.user.*
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+*.cmake
+CMakeFiles/
+
+# Ignore generated Makefiles
+Makefile
+Makefile.*
+
+# Ignore VS Code workspace file
+.vscode/
+
+# Ignore compiled object files
+*.obj
+*.o
+*.lo
+*.la
+*.al
+
+# Ignore shared libraries
+*.dll
+*.so
+*.dylib
+
+# Ignore static libraries
+*.lib
+*.a
+*.lai
+
+# Ignore Qt project build output
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+
+# Ignore other temporary files
+*.tmp
+*.temp
+*.log
+*.cache
+*.diff
+*.patch
+*.rej
+*.orig
+*~
+\#*\#
+.\#*
